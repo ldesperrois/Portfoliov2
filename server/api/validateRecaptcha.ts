@@ -28,6 +28,6 @@ export default defineEventHandler(async (event) => {
     console.log(response.data)
     return response.data;
   } catch (error) {
-    return { success: false, message: 'Error during reCAPTCHA verification', error,secret,token };
+    return { success: false, message: 'Error during reCAPTCHA verification', error: error.response?.data || error.message };
   }
 });
