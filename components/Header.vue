@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-            <NuxtImg class="header--img" src="/img/Sublimateur Pixelcut Export.webp" height="73"/>
+            <NuxtImg class="header--img" src="/img/Sublimateur_Pixelcut_Export.webp" height="73"/>
             <div class="header--menu">
                 <div class="menu--link">
                     <NuxtLink to="#accueil" @click="closeMenu">Accueil</NuxtLink>

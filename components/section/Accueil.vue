@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <NuxtImg  src="/img/Peinture abstraite bleue.webp" class="accueil--img"/>
+            <NuxtImg  src="/img/Peinture_abstraite_bleue.webp" class="accueil--img"/>
         </div>
     </div>
 </template>

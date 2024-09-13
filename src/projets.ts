@@ -66,7 +66,7 @@ export interface Projet {
       description: "Premier projet de développement web en équipe de cinq pour découvrir les fondamentaux d'un projet de développement web. Ecoute des bésoins, gestion d'équipe, maquettage et charte graphique.",
       github: "https://github.com/ldesperrois/Website",
       langages: ["html","css"],
-      listeProjet:["/img/Koh_sport_1.webp","/img/Koh_Sport_2.webp"],
+      listeProjet:["/img/Koh_Sport_1.webp","/img/Koh_Sport_2.webp"],
       img: "/img/KohSport.webp",
       website:true,
       link:"https://ldesperrois.github.io/Website/fr/index.html"
