@@ -112,6 +112,7 @@ export default{
 
                 const result = await response.json();
                 // Si réponse valide
+                console.log(result)
                 if (result.success) {
                     try{
                         // envoie de l'email

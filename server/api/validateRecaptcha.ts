@@ -25,6 +25,7 @@ export default defineEventHandler(async (event) => {
       }
     );
     // retourne la promesse et ses données
+    console.log(response.data)
     return response.data;
   } catch (error) {
     return { success: false, message: 'Error during reCAPTCHA verification', error };
