@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
       {
          method:"POST",
         params: {
-          secret,
+          secret:secret,
           response: token,
         },
         headers: {
@@ -31,10 +31,10 @@ export default defineEventHandler(async (event) => {
     if (response.data.success) {
       return response.data;
     } else {
-      return { success: false, message: 'reCAPTCHA verification failed', errorCodes: response.data['error-codes'] };
+      return { success: false, message: 'reCAPTCHA verification failed', errorCodes: response.data['error-codes'],secret };
     }
   } catch (err) {
     console.log(err);
-    throw err.response ? err.response.data : {success: false, error: 'captcha_error'}
+    throw err.response ? err.response.data : {success: false, error: 'captcha_error',test:secret}
   }
 });
