@@ -95,7 +95,7 @@ export default{
             const divError  = document.getElementById("error-form");
             // Si recpatcha non complété
             if (!recaptchaResponse) {
-                divError.innerHTML="<span style=color:red>Veuillez compléter le capctha</span>"
+                divError.innerHTML="<span style=color:red>Veuillez compléter le captcha</span>"
                 setTimeout(()=>{
                     divError.innerHTML=""
                 },4000)
@@ -141,7 +141,7 @@ export default{
                         }
                     }
                 } else {
-                    divError.innerHTML = "<span style=color:red>Erreur validation du Recpatcha</span>"
+                    divError.innerHTML = "<span style=color:red>Erreur validation du Recaptcha</span>"
                     setTimeout(()=>{
                         divError.innerHTML=""
                     },4000)

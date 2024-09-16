@@ -30,7 +30,6 @@ export default defineEventHandler(async (event) => {
       return { success: false, message: 'reCAPTCHA verification failed', errorCodes: response.data['error-codes'] };
     }
   } catch (error) {
-    console.error('Error during reCAPTCHA verification:', error.response?.data || error.message);
-    return { success: false, message: 'Error during reCAPTCHA verification', error: error.response?.data || error.message };
+    return { success: false, message: 'Error during reCAPTCHA verification', error: error};
   }
 });

@@ -35,6 +35,8 @@
             top: 5px;
         }
         .content-parcours{
+            max-width: 700px;
+            margin-left: 30px;
             span{
                 font-size: 25px;
                 font-weight: 300;
@@ -44,8 +46,7 @@
                 font-size: 16px;
                 font-weight: 300;
             }
-            max-width: 700px;
-            margin-left: 30px;
+            
         }
     }
     @media screen and (max-width:1200px) {
