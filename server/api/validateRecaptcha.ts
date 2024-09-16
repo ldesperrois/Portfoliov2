@@ -4,7 +4,7 @@ import axios from 'axios';
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const { token } = body;
-  const secret = useRuntimeConfig().private.recaptchaSecretKey;
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
 
   if (!token) {
     return { success: false, message: 'No token provided' };
