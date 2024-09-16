@@ -17,8 +17,9 @@ export default defineEventHandler(async (event) => {
       {
          method:"POST",
         params: {
-          secret:secret,
+          secret:"6Ld4eToqAAAAAC5g-iEdiXxVY61kshxb2Wr9uZVJ",
           response: token,
+          
         },
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
