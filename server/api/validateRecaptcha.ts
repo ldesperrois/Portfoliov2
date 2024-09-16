@@ -15,10 +15,11 @@ export default defineEventHandler(async (event) => {
       'https://www.google.com/recaptcha/api/siteverify',
       null,
       {
+         method:"POST",
         params: {
           secret,
           response: token,
-        },
+        }
       }
     );
     console.log('Response data:', response.data);  // Log detailed response
@@ -29,7 +30,8 @@ export default defineEventHandler(async (event) => {
     } else {
       return { success: false, message: 'reCAPTCHA verification failed', errorCodes: response.data['error-codes'] };
     }
-  } catch (error) {
-    return { success: false, message: 'Error during reCAPTCHA verification', error: error};
+  } catch (err) {
+    console.log(err);
+    throw err.response ? err.response.data : {success: false, error: 'captcha_error'}
   }
 });
