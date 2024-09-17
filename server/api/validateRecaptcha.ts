@@ -11,31 +11,31 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const response = await axios.post(
-      'https://www.google.com/recaptcha/api/siteverify',
-      null,
-      {
-         method:"POST",
-        params: {
-          secret:"6Ld4eToqAAAAAC5g-iEdiXxVY61kshxb2Wr9uZVJ",
-          response: token,
-          
-        },
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }
-      }
-    );
-    console.log('Response data:', response.data);  // Log detailed response
+    const result = await axios({
+      method: 'post',
+      url: 'https://www.google.com/recaptcha/api/siteverify',
+      data: new URLSearchParams({
+        secret: secret,
+        response: token
+      }).toString(),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+      },
+    });
 
-    // Check for error codes
-    if (response.data.success) {
-      return response.data;
-    } else {
-      return { success: false, message: 'reCAPTCHA verification failed', errorCodes: response.data['error-codes'],secret };
+    const data = result.data || {};
+
+    if (!data.success) {
+      throw {
+        success: false,
+        error: 'Response not valid'
+      };
     }
+
+    return data;  // Retourner les données reçues
+
   } catch (err) {
     console.log(err);
-    throw err.response ? err.response.data : {success: false, error: 'captcha_error',test:secret}
+    throw err.response ? err.response.data : { success: false, error: 'captcha_error' };
   }
 });

@@ -106,12 +106,15 @@ export default{
                 const response = await fetch('/api/validateRecaptcha', {
                     method: 'POST',
                     headers: 
-                        { 'Content-Type': 'application/json' },
-                     body: JSON.stringify({ token: recaptchaResponse }),
+                        { 'Content-Type':"application/x-www-form-urlencoded; charset=utf-8" },
+                        body: new URLSearchParams({
+                            token: recaptchaResponse
+                            }).toString()
                 });
 
-                const result = await response.json();
+               
                 // Si réponse valide
+                const result = await response.json()
                 console.log(result)
                 if (result.success) {
                     try{
