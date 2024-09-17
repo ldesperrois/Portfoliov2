@@ -11,17 +11,9 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const result = await axios({
-      method: 'post',
-      url: 'https://www.google.com/recaptcha/api/siteverify',
-      data: new URLSearchParams({
-        secret: secret,
-        response: token
-      }).toString(),
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
-      },
-    });
+    const result  = await axios.post(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`
+    );
 
     const data = result.data || {};
 
