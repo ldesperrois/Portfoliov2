@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
 
   try {
     const result  = await axios.post(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`
+      `https://www.google.com/recaptcha/api/siteverify?secret=${encodeURIComponent(secret)}&response=${encodeURIComponent(token)}`
     );
 
     const data = result.data || {};
