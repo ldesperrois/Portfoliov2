@@ -53,9 +53,8 @@ export default defineNuxtConfig({
       emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
       emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
     },
-    private: {
-      recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY
-    }
+    recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY
+    
     
     
   },

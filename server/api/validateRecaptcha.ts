@@ -4,15 +4,22 @@ import axios from 'axios';
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const { token } = body;
-  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  const secret : string | undefined = process.env.RECAPTCHA_SECRET_KEY;
 
   if (!token) {
     return { success: false, message: 'No token provided' };
   }
+  if(!secret){
+    return {sucess : false, message : 'No key provided'}
+  }
 
   try {
-    const result  = await axios.post(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${encodeURIComponent(secret)}&response=${encodeURIComponent(token)}`
+    const result = await axios.post('https://www.google.com/recaptcha/api/siteverify', 
+      new URLSearchParams({
+        secret: secret,
+        response: token
+      }).toString(),
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
     );
 
     const data = result.data || {};

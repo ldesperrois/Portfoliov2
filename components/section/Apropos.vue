@@ -26,8 +26,8 @@
                         surtout notre capacité à se dépasser. Vous pouvez d'ailleurs télécharger mon CV ci-dessous.
                     </p>
                 </div>
-                <a class="button-cv button--antiman button--round-l button--text-medium" download="CV_Lucas_Desperrois.pdf" href="/public/files/CV_Lucas_Desperrois.pdf">
-                    <i class="button__icon icon icon-map-marker"></i><span>Télécharger</span>
+                <a class="button-cv button--antiman button--round-l button--text-medium" download="CV_Lucas_Desperrois.pdf" href="/files/CV_Lucas_Desperrois.pdf">
+                    <i class="button__icon icon icon-map-marker"></i><span>Mon CV</span>
                 </a>
             </div>
         </div>
