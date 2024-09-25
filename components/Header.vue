@@ -99,7 +99,7 @@
     }
     .header--menu{
         position: absolute!important;
-        left: -100%;
+        
         top: 88px;
         gap: 0!important;
         margin: 0;
@@ -108,7 +108,9 @@
         height: fit-content;
         justify-content: center;
         background-color: #fff;
-        transition: 0.3s;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        visibility: hidden;
         
         .menu--link{
             
@@ -122,7 +124,12 @@
     }
     
     .header--menu.active{
-        left: 0;
+        
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition:  opacity 0.3s ease;
+
         .menu--link{
             display: flex;
             justify-content: center;
@@ -134,7 +141,15 @@
     }
     
 }
+@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
 
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
     
 </style>
 
@@ -144,28 +159,45 @@
 export default{
     data(){
         return{
-            iconChange:false
+            iconChange:false,
+            isMenuOpen: false,
+
         }
     },
     methods:{
         
         menu() {
-            const phoneMenu = document.querySelector(".header--menu");
-            if(this.iconChange==true){
-                this.iconChange=false;
-            }
-            else{
-                this.iconChange=true
-            }
-            phoneMenu.classList.toggle("active");
-
-            
-        },
-        closeMenu(){
-            const phoneMenu = document.querySelector(".header--menu");
-            this.iconChange=false
-            phoneMenu.classList.remove("active")
+        const phoneMenu = document.querySelector(".header--menu");
+        if (this.isMenuOpen) {
+            this.iconChange = false;
+            phoneMenu.style.opacity = '0'; 
+            setTimeout(() => {
+            phoneMenu.classList.remove("active");
+            phoneMenu.style.visibility = 'hidden';
+            phoneMenu.style.pointerEvents = 'none'; // Empêche l'interaction
+            }, 500); 
+        } else {
+            this.iconChange = true;
+            phoneMenu.classList.add("active");
+            phoneMenu.style.visibility = 'visible';
+            phoneMenu.style.pointerEvents = 'auto'; // Permet l'interaction
+            setTimeout(() => {
+            phoneMenu.style.opacity = '1'; 
+            }, 0); 
         }
+        this.isMenuOpen = !this.isMenuOpen;
+    },
+    closeMenu() {
+      const phoneMenu = document.querySelector(".header--menu");
+      this.iconChange = false;
+      phoneMenu.style.opacity = '0'; 
+      setTimeout(() => {
+        phoneMenu.classList.remove("active");
+        phoneMenu.style.visibility = 'hidden';
+        phoneMenu.style.pointerEvents = 'none'; // Bloque l'interaction
+      }, 500); // Délai pour attendre la fin de la transition d'opacité
+      this.isMenuOpen = false;
+    }
     },
     computed:{
         icon(){
