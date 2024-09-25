@@ -97,7 +97,7 @@ export default{
         backdrop-filter: blur(20px); 
     
         .modal{
-            max-height: 94vh;
+            max-height: 94dvh;
             overflow-y: auto;
             padding:20px;
             z-index: 10;
