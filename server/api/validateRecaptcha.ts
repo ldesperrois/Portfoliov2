@@ -1,23 +1,28 @@
-import { defineEventHandler, readBody } from 'h3';
+import { defineEventHandler, getRequestHeaders, readBody } from 'h3';
 import axios from 'axios';
 
 export default defineEventHandler(async (event) => {
+  const headers = getRequestHeaders(event);
   const body = await readBody(event);
   const { token } = body;
-  const secret : string | undefined = process.env.RECAPTCHA_SECRET_KEY;
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+
+  // Récupérer le nom d'hôte (domaine) du client
+  const host = headers.host;
 
   if (!token) {
-    return { success: false, message: 'No token provided' };
+    return { success: false, message: 'No token provided', hostname: host };
   }
-  if(!secret){
-    return {sucess : false, message : 'No key provided'}
+  if (!secret) {
+    return { success: false, message: 'No secret key provided', hostname: host };
   }
 
   try {
-    const result = await axios.post('https://www.google.com/recaptcha/api/siteverify', 
+    const result = await axios.post(
+      'https://www.google.com/recaptcha/api/siteverify',
       new URLSearchParams({
-        secret: secret,
-        response: token
+        secret,
+        response: token,
       }).toString(),
       { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
     );
@@ -25,16 +30,13 @@ export default defineEventHandler(async (event) => {
     const data = result.data || {};
 
     if (!data.success) {
-      throw {
-        success: false,
-        error: 'Response not valid'
-      };
+      return { success: false, error: 'Invalid reCAPTCHA response', hostname: data.hostname || host, details: data['error-codes'] };
     }
 
-    return data;  // Retourner les données reçues
+    return { success: true, hostname: data.hostname || host }; // Inclure le nom d'hôte dans la réponse
 
   } catch (err) {
-    console.log(err);
-    throw err.response ? err.response.data : { success: false, error: 'captcha_error' };
+    console.error('Erreur lors de la validation reCAPTCHA :', err);
+    return { success: false, error: 'captcha_error', hostname: host };
   }
 });

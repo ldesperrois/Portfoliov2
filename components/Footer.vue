@@ -90,72 +90,46 @@ export default{
          * 
          * @param e 
          */
-        const submitForm = async (e)=>{
+         const submitForm = async (e) => {
+            e.preventDefault();
             const recaptchaResponse = grecaptcha.getResponse();
-            const divError  = document.getElementById("error-form");
-            // Si recpatcha non complété
+            const divError = document.getElementById('error-form');
+
             if (!recaptchaResponse) {
-                divError.innerHTML="<span style=color:red>Veuillez compléter le captcha</span>"
-                setTimeout(()=>{
-                    divError.innerHTML=""
-                },4000)
-                return;
+                divError.innerHTML = '<span style="color:red">Veuillez compléter le captcha</span>';
+                setTimeout(() => { divError.innerHTML = ''; }, 4000);
+            return;
             }
+
             try {
-                // Envoie une requête au serveur pour valider le recpatcha
                 const response = await fetch('/api/validateRecaptcha', {
                     method: 'POST',
-                    headers: 
-                        { 'Content-Type':"application/x-www-form-urlencoded; charset=utf-8" },
-                        body: new URLSearchParams({
-                            token: recaptchaResponse
-                            }).toString()
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8' },
+                    body: new URLSearchParams({ token: recaptchaResponse }).toString(),
                 });
 
-               
-                // Si réponse valide
-                const result = await response.json()
+                const result = await response.json();
                 console.log(result)
                 if (result.success) {
-                    try{
-                        // envoie de l'email
-                        await sendEmail();
-                        divError.innerHTML = "<span style=color:green> Email envoyé avec succès</span>"
-                        setTimeout(()=>{
-                             divError.innerHTML=""
-                        },4000)
-                        grecaptcha.reset()
-                        e.target.reset()
-                    }catch(error){
-                        console.log(error)
-                        if(error.message=="Email"){
-                            divError.innerHTML = "<span style=color:red> Email Incorrect</span>"
-                            setTimeout(()=>{
-                                divError.innerHTML=""
-                            },4000)
-                            grecaptcha.reset()
-                        }
-                        else{
-                            divError.innerHTML = "<span style=color:red> Erreur lors de l'envoie de l'email</span>"
-                            setTimeout(()=>{
-                                divError.innerHTML=""
-                            },4000)
-                            grecaptcha.reset()
-                        }
-                    }
+                    // Envoi de l'email si reCAPTCHA validé
+                    await sendEmail();
+                    divError.innerHTML = '<span style="color:green">Email envoyé avec succès</span>';
+                    setTimeout(() => { divError.innerHTML = ''; }, 4000);
+                    grecaptcha.reset();
+                    e.target.reset();
                 } else {
-                    divError.innerHTML = "<span style=color:red>Erreur validation du Recaptcha</span>"
-                    setTimeout(()=>{
-                        divError.innerHTML=""
-                    },4000)
+                    divError.innerHTML = `<span style="color:red">Erreur de validation du Recaptcha: ${result.error}</span>`;
+                    setTimeout(() => { divError.innerHTML = ''; }, 4000);
                     grecaptcha.reset();
                 }
             } catch (error) 
             {
-                grecaptcha.reset()
-                console.error(error);
+                console.error('Erreur lors de la validation du recaptcha', error);
+                divError.innerHTML = '<span style="color:red">Erreur lors de la validation du Recaptcha</span>';
+                setTimeout(() => { divError.innerHTML = ''; }, 4000);
+            grecaptcha.reset();
             }
-        }
+        };
         return {
             config,
             submitForm,
@@ -339,6 +313,15 @@ export default{
         
     }
     
+    #result-message {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #ff0000; /* Rouge pour les erreurs */
+}
+
+#result-message.success {
+  color: #28a745; /* Vert pour les succès */
+}
     
     
 
