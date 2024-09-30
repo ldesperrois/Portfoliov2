@@ -167,36 +167,21 @@ export default{
     methods:{
         
         menu() {
+            if(this.iconChange==true){
+                this.iconChange=false
+            }
+            else{
+                this.iconChange=true
+            }
         const phoneMenu = document.querySelector(".header--menu");
-        if (this.isMenuOpen) {
-            this.iconChange = false;
-            phoneMenu.style.opacity = '0'; 
-            setTimeout(() => {
-            phoneMenu.classList.remove("active");
-            phoneMenu.style.visibility = 'hidden';
-            phoneMenu.style.pointerEvents = 'none'; // Empêche l'interaction
-            }, 500); 
-        } else {
-            this.iconChange = true;
-            phoneMenu.classList.add("active");
-            phoneMenu.style.visibility = 'visible';
-            phoneMenu.style.pointerEvents = 'auto'; // Permet l'interaction
-            setTimeout(() => {
-            phoneMenu.style.opacity = '1'; 
-            }, 0); 
-        }
-        this.isMenuOpen = !this.isMenuOpen;
+        phoneMenu.classList.toggle("active");
+            
     },
     closeMenu() {
       const phoneMenu = document.querySelector(".header--menu");
       this.iconChange = false;
-      phoneMenu.style.opacity = '0'; 
-      setTimeout(() => {
-        phoneMenu.classList.remove("active");
-        phoneMenu.style.visibility = 'hidden';
-        phoneMenu.style.pointerEvents = 'none'; // Bloque l'interaction
-      }, 500); // Délai pour attendre la fin de la transition d'opacité
-      this.isMenuOpen = false;
+      phoneMenu.classList.remove("active");
+       
     }
     },
     computed:{

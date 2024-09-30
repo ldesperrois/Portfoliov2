@@ -38,10 +38,10 @@
 
 .modal--img{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    max-height: 250px;
+    
     max-width: 500px;
     width: 80%;
-    height: 100%;
+    height: 250px;
 }
 #modal-swiper{
     position: relative;
