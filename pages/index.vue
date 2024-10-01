@@ -4,6 +4,7 @@
         <sectionAccueil/>
         <div class="container--propos--projets">
             <sectionApropos/>
+            <sectionProgrammingLanguage/>
             <sectionProjets/>
         </div>
         <SectionParcours/>
@@ -12,6 +13,9 @@
 </template>
 
 <style lang="scss">
+    html{
+        overflow: scroll;
+    }
     main{
         display: flex;
         flex-direction: column;
