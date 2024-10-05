@@ -28,9 +28,10 @@
                 </div>
                 <textarea required id="message" name="message" placeholder="Ecrivez votre message"></textarea>
             </div>
-            <div class="g-recaptcha" data-sitekey=6Ld4eToqAAAAAB4UKWnF1O8pTekPlzHcUFzngREH></div>
             <div id="error-form"></div>
-            <button id="send" type="submit">Envoyer</button>
+            <button class="button-cv button--antiman button--round-l button--text-medium" id="send" type="submit">
+                <i class="button__icon icon icon-map-marker"></i><span>Envoyer</span>
+            </button>
         </form>
 
         <p id="by">Made By ldesperrois</p>
@@ -86,48 +87,40 @@ export default{
             }
         }
         /**
-         * Fonction qui envoie le mail avec les vérifications du recpatcha
+         * Fonction qui envoie le mail
          * 
          * @param e 
          */
          const submitForm = async (e) => {
             e.preventDefault();
-            const recaptchaResponse = grecaptcha.getResponse();
             const divError = document.getElementById('error-form');
-
-            if (!recaptchaResponse) {
-                divError.innerHTML = '<span style="color:red">Veuillez compléter le captcha</span>';
-                setTimeout(() => { divError.innerHTML = ''; }, 4000);
-            return;
-            }
-
             try {
-                const response = await fetch('/api/validateRecaptcha', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8' },
-                    body: new URLSearchParams({ token: recaptchaResponse }).toString(),
-                });
-
-                const result = await response.json();
-                console.log(result)
-                if (result.success) {
-                    // Envoi de l'email si reCAPTCHA validé
-                    await sendEmail();
-                    divError.innerHTML = '<span style="color:green">Email envoyé avec succès</span>';
-                    setTimeout(() => { divError.innerHTML = ''; }, 4000);
-                    grecaptcha.reset();
-                    e.target.reset();
-                } else {
-                    divError.innerHTML = `<span style="color:red">Erreur de validation du Recaptcha: ${result.error}</span>`;
-                    setTimeout(() => { divError.innerHTML = ''; }, 4000);
-                    grecaptcha.reset();
-                }
+                // Essaye d'envoyer l'email
+                await sendEmail();
+                divError.innerHTML = '<span style="color:green">Email envoyé avec succès</span>';
+                setTimeout(() => { divError.innerHTML = ''; }, 4000);
+                // Reset du formulaire
+                e.target.reset();
+                let buttonSend = document.getElementById("send");
+                // Désactivation du bouton
+                buttonSend.disabled=true;
+                
+                
             } catch (error) 
             {
-                console.error('Erreur lors de la validation du recaptcha', error);
-                divError.innerHTML = '<span style="color:red">Erreur lors de la validation du Recaptcha</span>';
+                // Message d'erreurs
+                if(error.message=="Email"){
+                    divError.innerHTML = '<span style="color:red">Email non valide</span>';
+
+                }
+                else{
+                    // Message d'erreur
+                    divError.innerHTML = '<span style="color:red">Email envoyé sans succès</span>';
+                }
                 setTimeout(() => { divError.innerHTML = ''; }, 4000);
-            grecaptcha.reset();
+
+                
+
             }
         };
         return {
@@ -183,7 +176,7 @@ export default{
         .footer--email{
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 15px;
             h3{
                 font-size: 28px;
             }
@@ -217,45 +210,12 @@ export default{
                     border-color: #05060f;
                 }
             }
-            button#send {
-                padding: 15px 25px;
-                border: unset;
-                border-radius: 15px;
-                color: #212121;
-                z-index: 1;
-                background: #fff;
-                position: relative;
-                font-weight: 300;
-                font-size: 14px;
-                width: 30%;
-                -webkit-box-shadow:  rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-                transition: all 250ms;
-                overflow: hidden;
-                }
-
-                button#send::before {
-                content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    height: 100%;
-                    width: 0;
-                    border-radius: 15px;
-                    background-color: #212121;
-                    z-index: -1;
-                    -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-                    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-                    transition: all 0.50s
-                }
-
-                button#send:hover {
-                color: #e8e8e8;
-                }
-
-                button#send:hover::before {
-                width: 100%;
-                }
+            button{
+                max-width: 100px;
+            }
+            button::before{
+                border-color: black;
+            }
         }
         
     }

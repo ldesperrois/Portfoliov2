@@ -1,5 +1,6 @@
 <template>
-    <div class="section--projets" id="projet">
+    <div class="section--projets" >
+        <div id="projet" class="anchor-projets"></div>
         <EffectTypingText :text="text"/>
         <SliderProjets :datas="projets" :perView="2"/>
     </div>
@@ -14,13 +15,17 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
-        margin-top: 5em;
-       
+        margin-top: 5em; 
         gap: 70px;
-        margin-bottom: 5em;
+        margin-bottom: 100px;
+        margin-top: 100px;
         
         
         
+    }
+    .anchor-projets{
+        position: relative;
+        top: -100px;
     }
 </style>
 

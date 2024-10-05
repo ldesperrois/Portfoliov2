@@ -11,6 +11,10 @@
                     <div class="surligne"></div>
                 </div>
                 <div class="menu--link">
+                    <NuxtLink to="#anchor-programming" @click="closeMenu">Outils</NuxtLink>
+                    <div class="surligne"></div>
+                </div>
+                <div class="menu--link">
                     <NuxtLink to="#projet" @click="closeMenu">Projets</NuxtLink>
                     <div class="surligne"></div>
                 </div>
@@ -91,8 +95,8 @@
     
     .menu--hamburger{
         display: block!important;
-        margin-right: 10px;
-        font-size: 30px;
+        margin-right: 30px;
+        font-size: 35px;
     }
     nav{
         align-items: center;
@@ -116,7 +120,7 @@
             
             border-bottom: dashed ;
             width: 80%;
-            height: 100px;
+            height : 85px;
             div{
                 display: none
             }

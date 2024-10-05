@@ -1,5 +1,6 @@
 <template>
     <section id="programming-language">
+        <div id="anchor-programming"></div>
         <h2>Outils manipulés</h2>
         <div id="container-programming">
             <canvas ref="canvas"></canvas>
@@ -9,8 +10,13 @@
 </template>
 
 <style lang="scss" scoped>
+    #anchor-programming{
+      position: relative;
+      top: -100px;
+    }
     #programming-language{
-        margin-top: 2em;
+        margin-top: 50px;
+        margin-bottom: 50px;
         width: 100%;
         h2{
             text-align: center;

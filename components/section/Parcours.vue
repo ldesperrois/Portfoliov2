@@ -17,12 +17,17 @@
         background-color:#322A64;
         padding-left: 3em;
         padding-right: 3em;
+        margin-top: 150px;
         align-items: center;
         h1{
             font-size: 35px;
             color : #fff;
             margin-top: 2em;
             text-align: center;
+        }
+        h1+div{
+            margin-bottom: 100px;
+            margin-top: 50px;
         }
         .timeline{
             margin-top: 2em;

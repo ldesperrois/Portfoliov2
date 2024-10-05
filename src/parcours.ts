@@ -14,7 +14,7 @@ const parcours  : Parcours[]  =[
         id:1,
         title:"Concepteur/ Développeur Enedis",
         year:"2023-2025",
-        description: "Incididunt excepteur fugiat eu occaecat consequat nulla minim cillum labore eu. Eu mollit deserunt mollit non irure ex pariatur exercitation. m. e dolor ex ad eu eu nostrud irure fugiat qui cupidatat est. m. e dolor ex ad eu eu nostrud irure fugiat qui cupidatat est"
+        description: "Premier poste occupé en tant que développeur au sein des IEG (entreprises de l'énergie). J'ai pu y développer mes compétences dans des frameworks récents de type Laravel/Vuejs pour des logiciels ERP. Apprendre à travailler dans une équipe de développeur a été une expérience qui m'a beaucoup marqué. J'ai pu aussi travailler l'écoute de besoins métiers et du client essentiels pour la réussite d'un projet."
 
     },
 
@@ -22,13 +22,13 @@ const parcours  : Parcours[]  =[
        id:2,
        title:"BUT Informatique",
        year:"2022-2025",
-       description: "Incididunt excepteur fugiat eu occaecat consequat nulla minim cillum labore eu. Eu mollit deserunt mollit non irure ex pariatur exercitation. m. e dolor ex ad eu eu nostrud irure fugiat qui cupidatat est. m. e dolor ex ad eu eu nostrud irure fugiat qui cupidatat est"
+       description: "Formation de 3 ans qui m'a fait découvrir l'essentiel qu'un développeur doit connaître aujourd'hui dans le monde du travail. J'ai pu y réaliser de nombreux projets en équipes et renforcer mes compétences dans de nombreux domaines informatiques (réseaux,IA, développement web, data). Je me suis surtout en spécialisé dans le Parcours C de ma formation : administration, gestion et exploitations des données."
     },
     {
         id:3,
         title:"Lycée naval",
         year:"2019-2022",
-        description: "Incididunt excepteur fugiat eu occaecat consequat nulla minim cillum labore eu. Eu mollit deserunt mollit non irure ex pariatur exercitation. m. e dolor ex ad eu eu nostrud irure fugiat qui cupidatat est. m. e dolor ex ad eu eu nostrud irure fugiat qui cupidatat est"
+        description: "J'ai effectué 3 ans au lycée militaire du centre d'instruction naval de Brest en secondaire. Expérience très enrichissante grâce notamment au cadre scolaire de qualité qui était proposé. J'ai pu découvrir le monde militaire et toutes les valeurs qu'il enseigne en termes de disciplines et motivations. Un monde que j'aimerais peut-être intégrer plus tard."
     },
 ]
 

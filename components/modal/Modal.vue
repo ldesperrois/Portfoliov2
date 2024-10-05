@@ -1,16 +1,16 @@
 <template>
     <Transition name="fade" @before-enter="beforeEnter" @enter="enter" @leave="leave">
-        <div v-if="isVisible" class="section--modal">
+        <div v-if="isVisible" class="section--modal" @click="closeSection">
             <div class="modal" >
                 <div class="title">
                     <div class="head-modal">
                         <h3>{{ data.name }}</h3>
-                        <NuxtLink v-show="data.website" :href="data.link">
+                        <NuxtLink  v-show="data.website" :href="data.link">
                             <FontAwesome  icon="link"/>
                         </NuxtLink>
                     </div>
                     
-                    <font-awesome @click='close' class="socialnetwork" icon="close" />
+                    <font-awesome id="close" @click='close' class="socialnetwork" icon="close" />
                 </div>
                 <div class="content">
                     <SliderModal :imageList="data.listeProjet"/>
@@ -55,8 +55,16 @@ export default{
     },
     methods:{
         // Emettre un evenement de close au composant Parent
-        close(){
-            this.$emit('close')
+        close(e){
+            
+                this.$emit('close')
+            
+            
+        },
+        closeSection(e){
+            if(!e.target.closest('.modal')){
+                this.$emit('close')
+            }
         },
         // Avant l'apparition de la modal
         beforeEnter(el) {
@@ -100,7 +108,7 @@ export default{
             max-height: 88dvh;
             overflow-y: auto;
             padding:20px;
-            z-index: 10;
+            z-index: 110;
             border-radius: 20px;
             background: #fff;
             position: fixed;

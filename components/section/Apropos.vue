@@ -1,5 +1,6 @@
 <template>
-    <div class="section--apropos" id="decouvrir" >
+    <div class="section--apropos"  >
+        <div id="decouvrir" ></div>
         <div class="container--apropos">
             <div class="container--image">
                 <NuxtImg class="image--apropos" src="/img/watibg.webp" />
@@ -35,13 +36,18 @@
 </template>
 
 <style lang="scss" scoped>
+    #decouvrir{
+        position: relative;
+        top: -100px;
+    }
     .section--apropos{
         display: flex;
+        scroll-margin-top:500px;
         flex-direction: column;
         width: 100%;
         z-index: 10;
-        margin-top: 5em;
-        margin-bottom: 5em;
+        margin-top: 100px;
+        margin-bottom: 100px;
         .container--apropos{
             display: flex;
             flex-direction: row;
@@ -75,6 +81,9 @@
                         font-size: 17px;
                         font-weight: 300;
                     }
+                }
+                a::before{
+                    border-color: black;
                 }
             }
 

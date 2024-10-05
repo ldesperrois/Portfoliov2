@@ -11,10 +11,12 @@
         </div>
         <div class="container--accueil">
             <div class="accueil--text">
-                <h1>Portfolio<br/>Desperrois Lucas</h1>
+                <h1>Desperrois Lucas</h1>
                 <p>Découvrez mes projets et compétences<br/> dans le domaine du développement web moderne</p>
                 <div class="container--discover">
-                    <NuxtLink class="discover" to="#decouvrir">Découvrir</NuxtLink>
+                    <a href="#decouvrir" class="button-cv button--antiman button--round-l button--text-medium">
+                        <i class="button__icon icon icon-map-marker"></i><span>Découvrir</span>
+                     </a>
                     <div class="reseaux">
                         <NuxtLink to="https://www.instagram.com/lucas.dsp/">
                             <font-awesome class="socialnetwork" :icon="['fab', 'instagram']" />
@@ -34,10 +36,11 @@
 </template>
 
 <style lang="scss" scoped>
-
+   
     .section--accueil{
         padding-left: 4rem;
-        padding-right: 4rem;       
+        padding-right: 4rem;  
+        margin-bottom: 100px;
         overflow: hidden;
         min-height: 100vh;
         display: flex;
@@ -87,18 +90,11 @@
                     flex-direction: row;
                     align-items: center;
                     gap: 30px;
-                    a.discover{
-                      cursor: pointer;
-                        font-weight: 300;
-                        color: #fff;
-                        width: 150px;
-                        height: 45px;
-                        text-align: center;
-                        display: flex;
-                        border-radius: 20px;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: #1874B6;
+                    a{
+                      color:black;
+                    }
+                    a:hover{
+                        color: white;
                     }
                     div.reseaux{
                         display: flex;
