@@ -15,7 +15,7 @@
       top: -100px;
     }
     #programming-language{
-        margin-top: 50px;
+        margin-top: 150px;
         margin-bottom: 50px;
         width: 100%;
         h2{
@@ -79,8 +79,8 @@ export default {
       canvas: canvas,
       engine: engine,
       options: {
-        width: 800,
-        height: 550,
+        width: 900,
+        height: 650,
         showAngleIndicator: false,
         wireframes: false, // Réalisme des objets
         background: '#ECEFF1',
@@ -161,8 +161,8 @@ export default {
         render: {
           sprite: {
             texture: imagePath,
-            xScale: 2,
-            yScale: 2,
+            xScale: 2.5,
+            yScale: 2.5,
           }
         }
       });

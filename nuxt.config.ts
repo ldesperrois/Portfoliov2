@@ -6,8 +6,6 @@ export default defineNuxtConfig({
     '@vesp/nuxt-fontawesome', 
     'nuxt-swiper', 
   ],
-  
- 
   fontawesome: {
     icons: {
       solid: ['envelope', 'close', 'bars','link'],
@@ -21,16 +19,8 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      script:[
-        {
-          src: 'https://www.google.com/recaptcha/api.js',
-          async: true,
-          defer: true,
-        },
-      ],
       link: [
         {
-          
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500&display=swap'
         }

@@ -47,7 +47,7 @@
         width: 100%;
         z-index: 10;
         margin-top: 100px;
-        margin-bottom: 100px;
+        margin-bottom:200px;
         .container--apropos{
             display: flex;
             flex-direction: row;
