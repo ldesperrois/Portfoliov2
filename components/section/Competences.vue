@@ -1,6 +1,6 @@
 <template>
     <section id="competences">
-        <h1>Compéténces</h1>
+        <h1>Compétences</h1>
         <div class="container-competences">
             <CardCompetences v-for="(competence,index) in competences" :key="index" :compt="competence"/>
         </div>
@@ -20,6 +20,7 @@
             align-content: center;
     margin-top: 100px;
     display: grid;
+    place-items: center;
     gap: 30px;
     grid-template-columns: repeat(3, 1fr); /* 3 colonnes par défaut */
 
@@ -43,22 +44,6 @@
                 competences
             }
         },
-        setup(props, ctx) {
-            let transitionTab : [] = [];
-            const tabThreeElement  = [];  
-            console.log(competences)
-            competences.forEach((compt)=>{
-                transitionTab.push(compt)
-                if(transitionTab.length==3){
-                    tabThreeElement.push(transitionTab)
-                    transitionTab=[];
-                }
-                
-            })
-            return{
-                tabThreeElement
-            }
-        }
     }
     
 </script>

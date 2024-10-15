@@ -12,7 +12,6 @@ import { onMounted } from 'vue'
 export default {
   props:{
     compt:{
-      type:Object,
       required:true
     }
     
