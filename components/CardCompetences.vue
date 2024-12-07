@@ -12,7 +12,9 @@ import { onMounted } from 'vue'
 export default {
   props:{
     compt:{
-      required:true
+      required:true,
+      type:Object,
+      default:()=>({})
     }
     
   },
@@ -44,7 +46,7 @@ export default {
   computed:{
     backgroundImage(){
       return{
-      backgroundImage: `url(${this.compt.linkimage})`,
+      backgroundImage: `url(${this.$props.compt.linkimage})`,
       backgroundSize: 'cover',  // tu peux personnaliser les autres styles ici
       backgroundPosition: 'center'
     }

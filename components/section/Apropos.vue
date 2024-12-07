@@ -10,7 +10,7 @@
                     <h2>Développeur Web</h2>
                     <p class="text--metier">
                         Découvrez mes projets de développemet web réalisés 
-                        dans le cadre universitair ou personelle. Je me passionne aussi pour d’autres domaines 
+                        dans le cadre universitaire ou personelle. Je me passionne aussi pour d’autres domaines 
                         du développement et notamment celui de 
                         l’embarqué que j’approfondi personellement. Ayant eu une éxperience à travers un Lycée de la défense, j'aimerai plus tard 
                          mettre mes compétences acquises au service des armées. Un univers que j'apprécie, que ce soit par le cadre qu'il propose mais
@@ -23,8 +23,8 @@
                         J’ai réalisé au cours de mes études et de mon alternance de nombreux projets qui 
                         m’ont appris à collaborer et amener mes équipes vers le haut. Vous avez l’occasion 
                         à travers mon Portfolio de découvrir cetains de ces projets.  Selon moi 
-                        l’expérience est importante car elle démontre nôtre intérêt mais  
-                        surtout notre capacité à se dépasser. Vous pouvez d'ailleurs télécharger mon CV ci-dessous.
+                        l’expérience est importante, elle témoigne nôtre intérêt mais  
+                        surtout notre capacité à se surpasser. Vous pouvez d'ailleurs télécharger mon CV ci-dessous.
                     </p>
                 </div>
                 <a class="button-cv button--antiman button--round-l button--text-medium" download="CV_Lucas_Desperrois.pdf" href="/files/CV_Lucas_Desperrois.pdf">

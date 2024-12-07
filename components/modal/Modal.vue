@@ -23,10 +23,8 @@
                             <div>
                                 <h4>Technologies utilisées</h4>
                                 <div id="programation">
-                                    <NuxtImg class="svgLanguage" v-for="(img,i) in data.langages" :key="i" :src="'/img/'+img+'.svg'"/>                          
-
+                                    <NuxtImg class="svgLanguage" v-for="(img,i) in data.langages" :key="i" :src="'/img/'+img"/>                          
                                 </div>
-            
                             </div>
                             <div>
                                 <NuxtLink :to="data.github">
