@@ -17,16 +17,24 @@
                     <div class="projet--text">
                         <div class="description">
                             <h4>Description</h4>
-                            <p>{{ data.description }}</p>
+                            <p id="description">{{ data.description }}</p>
                         </div>
-                        <div class="techno">
-                            <div>
+                        <div class="competences">
+                            <h4>Compétences acquises</h4>
+                            <div class="competences--list">
+                                <p>{{ data.competences.join(', ') }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="techno" :class="{ end: !data.langages }">
+                            <div v-if="data.langages">
                                 <h4>Technologies utilisées</h4>
                                 <div id="programation">
                                     <NuxtImg class="svgLanguage" v-for="(img,i) in data.langages" :key="i" :src="'/img/'+img"/>                          
                                 </div>
                             </div>
-                            <div>
+                          
+                            <div  >
                                 <NuxtLink :to="data.github">
                                     <font-awesome class="github" :icon="['fab', 'github']" />
                                 </NuxtLink>
@@ -85,6 +93,22 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+    .end{
+        justify-content: end!important;
+    }
+    p{
+        margin: 0;
+    }
+    .competences--list{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        p{
+            margin: 0;
+            font-size: 15px;
+            font-weight: 300;
+        }
+    }
     svg.language{
         width: 30px;
         height: 30px;

@@ -10,7 +10,7 @@
                     <h2>Développeur Web</h2>
                     <p class="text--metier">
                         Découvrez mes projets de développemet web réalisés 
-                        dans le cadre universitaire ou personelle. Je me passionne aussi pour d’autres domaines 
+                        dans le cadre universitaire ou personelle. Je me suis notamment spécialisé avec ma formation dans le parcours administration, gestion et exploitation de la donnée. Je me passionne aussi pour d’autres domaines 
                         du développement et notamment celui de 
                         l’embarqué que j’approfondi personellement. Ayant eu une éxperience à travers un Lycée de la défense, j'aimerai plus tard 
                          mettre mes compétences acquises au service des armées. Un univers que j'apprécie, que ce soit par le cadre qu'il propose mais

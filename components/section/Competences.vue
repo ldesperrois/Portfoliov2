@@ -1,6 +1,6 @@
 <template>
     <section id="competences">
-        <h1>Compétences</h1>
+        <h1>Mes Compétences</h1>
         <div class="container-competences">
             <CardCompetences v-for="(competence,index) in competences" :key="index" :compt="competence"/>
         </div>

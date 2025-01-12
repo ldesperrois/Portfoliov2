@@ -7,10 +7,11 @@ export interface Projet {
     description: string;
     github: string | boolean;
     listeProjet: string[];
-    langages: string[];
+    langages: string[] | null;
     img: string;
     website:boolean;
     link:string | null;
+    competences :string[] ;
   }
   // Liste des projets
   const projets: Projet[] = [
@@ -23,7 +24,9 @@ export interface Projet {
       img: "/img/AlhaizBreizh.webp",
       listeProjet:["/img/Alhaiz_Breizh_1.webp","/img/Alhaiz_Breizh_2.webp"],
       website:false,
-      link:null
+      link:null,
+      competences : ["Realiser un développement d'application","Travailler dans une équipe informatique","Conduite de projet","Gerer des données de l'informations"],
+
     },
     {
       id: 2,
@@ -34,8 +37,8 @@ export interface Projet {
       listeProjet:["/img/Portfoliov1_1.webp","/img/Portfoliov1_2.webp"],
       img: "/img/Portfoliov1.webp",
       website:true,
-      link:"https://ldesperrois.github.io/PortFolio_Desperrois/"
-
+      link:"https://ldesperrois.github.io/PortFolio_Desperrois/",
+      competences  : ["Realiser un développement d'application"],
     },
     
     {
@@ -47,18 +50,21 @@ export interface Projet {
       listeProjet:["/img/Puissance4_1.webp","/img/Puissance4_2.webp"],
       img: "/img/Puissance4.webp",
       website:false,
+      competences :["Réaliser un Développement d'application","Optimiser des applications informatiques",],
       link:null
     },
     {
       id: 4,
       name: "Portfoliov2",
       description: "Nouvelle version de mon Portfolio plus sobre et moderne avec l'utilisation de technologies plus récentes. Met en lumière mes projets et formations que j'ai effectué.",
-      github: false,
+      github: "https://github.com/ldesperrois/Portfoliov2",
       langages: ["nuxtjs.svg", "css.svg", "typescript.svg"],
       listeProjet:["/img/Portfoliov2_1.webp","/img/Portfoliov2_2.webp"],
       img: "/img/Portfoliov2.webp",
       website:true,
-      link:"https://www.lucas-desperrois.fr/"
+      link:"https://www.lucas-desperrois.fr/",
+      competences :["Réaliser un Développement d'application"],
+
     },
     {
       id: 5,
@@ -69,7 +75,9 @@ export interface Projet {
       listeProjet:["/img/Koh_Sport_1.webp","/img/Koh_Sport_2.webp"],
       img: "/img/KohSport.webp",
       website:true,
-      link:"https://ldesperrois.github.io/Website/fr/index.html"
+      link:"https://ldesperrois.github.io/Website/fr/index.html",
+      competences :["Réaliser un Développement d'application","Travailler dans une équipe informatique","Conduite de projet"],
+
     },
     {
       id:6,
@@ -80,7 +88,9 @@ export interface Projet {
       listeProjet:["/img/8Dames_1.webp","/img/8Dames_2.webp"],
       github:"https://github.com/ldesperrois/8-dames" ,
       website:false,
-      link:null
+      link:null,
+      competences :["Réaliser un Développement d'application","Optimiser des applications informatiques"],
+
     },
     {
       id:7,
@@ -91,7 +101,8 @@ export interface Projet {
       img:"/img/Parcoursup.webp",
       listeProjet:["/img/Parcoursup_1.webp","/img/Parcoursup_2.webp","/img/Parcoursup_3.webp"],
       website:false,
-      link:null
+      link:null,
+      competences :["Gérer des données de l'informations"],
     },
     {
       id:8,
@@ -102,9 +113,33 @@ export interface Projet {
       img:"/img/Pokemon.webp",
       listeProjet:["/img/PokemonGo_1.webp","/img/PokemonGo_2.webp"],
       website:true,
-      link:"https://otpspecter.github.io/PokemonWebSiteIUTLannion/"
+      link:"https://otpspecter.github.io/PokemonWebSiteIUTLannion/",
+      competences : ["Realiser un développement d'application","Travailler dans une équipe informatique"],
+    },
+    {
+      id:9,
+      name:"TeamBuilding",
+      description:"Projet de gestion de team building pour les entreprises. Permet de gérer les activités, les participants et les équipes. Réalisé en équipe de 5 en 3 semaines.",
+      github:"https://github.com/ldesperrois/TeamBuilding",
+      langages:null,
+      img:"/img/teambuilding_1.webp",
+      listeProjet:["/img/teambuilding_1.webp","/img/teambuilding_2.webp"],
+      website:false,
+      link:null,
+      competences : ["Conduite de projet"],
+    },
+    {
+      id:10,
+      name:"Generateur PDF",
+      description:"Generateur de pdf  qui permet de générer des pdf à partir de données. Utilisateur de qr-code avec docker. Automatisation avec script bash et travaille en équipe.",
+      github:"https://github.com/KazouDev/Generateur-PDF/tree/main",
+      langages:["html.svg","css.svg","php.svg","docker.svg","bash.svg"],
+      img:"/img/generateurpdf_1.webp",
+      listeProjet:["/img/generateurpdf_1.webp","/img/generateurpdf_2.webp","/img/generateurpdf_3.webp"],
+      website:false,
+      link:null,
+      competences : ["Administrer des systèmes informatiques communicants","Travailler dans une équipe informatique"],
     }
-      
   ];
   
   export default projets;
