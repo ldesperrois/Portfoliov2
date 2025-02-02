@@ -30,7 +30,6 @@
                     </div>
                 </div>
             </div>
-            <NuxtImg  src="/img/Peinture_abstraite_bleue.webp" class="accueil--img"/>
         </div>
     </div>
 </template>
@@ -52,38 +51,33 @@
         background-color: #322A64;
         animation: gradient 10s ease infinite; 
         background-size: 400% 400%;
-        
+        background-image: url("../../public/img/Peinture_abstraite_bleue.webp");
+        background-position: center;
+        background-size: cover;
         }
         .container--accueil{
             display: flex;
             flex-direction: row;
             align-items: center;
             z-index: 1;
-            
             gap: 100px;
-            .accueil--img{
-                object-fit: cover;
-                min-height: 650px;
-                border-radius: 20px;
-                width: 450px;
-            }
             .accueil--text{
                 height: 100%;
                 display: flex;
                 gap: 30px;
                 flex-direction: column;
                 align-items: flex-start;
-                color: #fff;
+                color:#FFFF;
                 
                 h1{
-                    font-size: 80px;
+                    font-size: 100px;
                     white-space:nowrap;
                     font-weight: 500;
                     
                 }
                 p{
-                    font-size: 20px;
-                    font-weight: 200;
+                    font-size: 25px;
+                    font-weight: 500;
                 }
                 .container--discover{
                     display: flex;
@@ -94,14 +88,14 @@
                       color:black;
                     }
                     a:hover{
-                        color: white;
+                        color: black;
                     }
                     div.reseaux{
                         display: flex;
                         flex-direction: row;
                         gap: 30px;
                         .socialnetwork{
-                        font-size: 40px;
+                        font-size: 55px;
                         color:#fff;
                         }
                     }
