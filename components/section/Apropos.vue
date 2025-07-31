@@ -3,7 +3,7 @@
         <div id="decouvrir" ></div>
         <div class="container--apropos">
             <div class="container--image">
-                <NuxtImg class="image--apropos" src="/img/watibg.webp" />
+                <NuxtImg class="image--apropos" src="/img/Lucas.webp" />
             </div>
             <div class="container--text--apropos" >
                 <div class="text--metier">
@@ -57,6 +57,7 @@
                 justify-content: center;
                 flex:1;
                 .image--apropos{
+                    object-position: left;
                     width: 500px;
                     object-fit: cover;
                     border-radius: 20px;

@@ -24,7 +24,8 @@ export default defineNuxtConfig({
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500&display=swap'
         }
-      ]
+      ],
+      title:'Portfolio - Lucas Desperrois'
     }
   },
 
