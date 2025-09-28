@@ -48,7 +48,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #322A64;
         animation: gradient 10s ease infinite; 
         background-size: 400% 400%;
         background-image: url("../../public/img/Peinture_abstraite_bleue.webp");

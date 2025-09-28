@@ -3,7 +3,7 @@
         <div id="decouvrir" ></div>
         <div class="container--apropos">
             <div class="container--image">
-                <NuxtImg class="image--apropos" src="/img/Lucas.webp" />
+                <NuxtImg class="image--apropos" src="/img/LucasD.webp" />
             </div>
             <div class="container--text--apropos" >
                 <div class="text--metier">
