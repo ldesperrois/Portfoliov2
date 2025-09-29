@@ -7,14 +7,12 @@
             </div>
             <div class="container--text--apropos" >
                 <div class="text--metier">
-                    <h2>Développeur Web</h2>
+                    <h2>Développeur </h2>
                     <p class="text--metier">
-                        Découvrez mes projets de développemet web réalisés 
-                        dans le cadre universitaire ou personelle. Je me suis notamment spécialisé avec ma formation dans le parcours administration, gestion et exploitation de la donnée. Je me passionne aussi pour d’autres domaines 
-                        du développement et notamment celui de 
-                        l’embarqué que j’approfondi personellement. Ayant eu une éxperience à travers un Lycée de la défense, j'aimerai plus tard 
-                         mettre mes compétences acquises au service des armées. Un univers que j'apprécie, que ce soit par le cadre qu'il propose mais
-                       aussi les valeurs qu'il enseigne.
+                        Découvrez l’ensemble de mes projets réalisés aussi bien dans le cadre universitaire que personnel. 
+                        J’ai développé mes compétences à <a target="_blank" href="https://iut-lannion.univ-rennes.fr/">l’IUT de Lannion</a>, au sein du parcours Administration, Gestion et Exploitation de la Donnée, tout en me passionnant pour d’autres domaines du développement, 
+                        en particulier les systèmes embarqués, que j’approfondis personnellement et que j’ai pu consolider au sein de  <a target="_blank" href="https://www.ensta-bretagne.fr/fr">l’ENSTA Bretagne</a> en formation d’ingénieur. Fort d’une expérience au sein d’un Lycée de la Défense, j’aimerais, à terme, mettre mes compétences au service des armées, 
+                        un univers que j’apprécie autant pour le cadre qu’il offre que pour les valeurs qu’il transmet.
                     </p>
                 </div>
                 <div class="text--experience" >
@@ -74,6 +72,9 @@
                 .text--metier, .text--experience{
                     display: flex;
                     flex-direction: column;
+                    a{
+                        display: contents;
+                    }
                     gap: 10px;
                     h2{
                         font-size: 35px;

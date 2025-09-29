@@ -34,7 +34,7 @@
             </button>
         </form>
 
-        <p id="by">Made By ldesperrois</p>
+        <p id="by">Made By <a href="https://github.com/ldesperrois">ldesperrois</a></p>
     </footer>
 </template>
 

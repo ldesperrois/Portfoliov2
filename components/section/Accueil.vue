@@ -12,7 +12,7 @@
         <div class="container--accueil">
             <div class="accueil--text">
                 <h1>Desperrois Lucas</h1>
-                <p>Découvrez mes projets et compétences<br/> dans le domaine du développement web moderne</p>
+                <p>Découvrez mes projets et compétences<br/> dans le domaine du développement informatique</p>
                 <div class="container--discover">
                     <a href="#decouvrir" class="button-cv button--antiman button--round-l button--text-medium">
                         <i class="button__icon icon icon-map-marker"></i><span>Découvrir</span>

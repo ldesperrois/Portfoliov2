@@ -3,7 +3,7 @@
         <span class="year">{{ parcour.year }}</span>
         <div class="content-parcours">
             <span>{{ parcour.title }}</span>
-            <p>{{ parcour.description }}</p>
+            <p v-html="parcour.description"> </p>
         </div>
     </div>
 </template>
