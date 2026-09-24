@@ -30,45 +30,13 @@
                 <div class="surligne"></div>
             </div>
             <div class="menu--link menu--link--lang desktop-only">
-                <div class="lang-switcher">
-                    <button 
-                        type="button"
-                        :class="['lang-btn', { active: isFr }]" 
-                        @click="changeLang('fr')"
-                        aria-label="Passer en version française"
-                    >
-                        FR
-                    </button>
-                    <button 
-                        type="button"
-                        :class="['lang-btn', { active: isEn }]" 
-                        @click="changeLang('en')"
-                        aria-label="Switch to English version"
-                    >
-                        EN
-                    </button>
-                </div>
+                <LanguageSwitch @change="closeMenu" />
             </div>
         </div>
 
         <div class="header--actions-mobile">
-            <div class="lang-switcher mobile-only">
-                <button 
-                    type="button"
-                    :class="['lang-btn', { active: isFr }]" 
-                    @click="changeLang('fr')"
-                    aria-label="Passer en version française"
-                >
-                    FR
-                </button>
-                <button 
-                    type="button"
-                    :class="['lang-btn', { active: isEn }]" 
-                    @click="changeLang('en')"
-                    aria-label="Switch to English version"
-                >
-                    EN
-                </button>
+            <div class="mobile-only">
+                <LanguageSwitch @change="closeMenu" />
             </div>
             <div class="menu--hamburger" @click="menu">
                 <font-awesome class="hamburger" :icon="icon" />
@@ -192,40 +160,6 @@ export default defineComponent({
             font-size: 32px;
             display: flex;
             align-items: center;
-        }
-    }
-
-    .lang-switcher {
-        display: inline-flex;
-        align-items: center;
-        background: #f1f3f5;
-        padding: 3px 4px;
-        border-radius: 20px;
-        border: 1px solid rgba(50, 42, 100, 0.15);
-        gap: 2px;
-        
-        .lang-btn {
-            background: transparent;
-            border: none;
-            padding: 4px 10px;
-            border-radius: 16px;
-            font-family: inherit;
-            font-size: 13px;
-            font-weight: 500;
-            color: #6c757d;
-            cursor: pointer;
-            transition: all 0.25s ease;
-
-            &:hover {
-                color: #322A64;
-            }
-
-            &.active {
-                background-color: #322A64;
-                color: #ffffff;
-                font-weight: 600;
-                box-shadow: 0 2px 6px rgba(50, 42, 100, 0.25);
-            }
         }
     }
 
