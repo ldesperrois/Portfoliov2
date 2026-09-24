@@ -1,15 +1,28 @@
 <template>
     <div class="section--projets" >
         <div id="projet" class="anchor-projets"></div>
-        <EffectTypingText :text="text"/>
-        <SliderProjets :datas="projets" :perView="2"/>
+        <EffectTypingText :key="'typing-' + locale" :text="sectionTitle"/>
+        <SliderProjets :key="'slider-' + locale" :datas="currentProjets" :perView="2"/>
     </div>
 </template>
-  
 
+<script setup lang="ts">
+import { computed } from 'vue';
+import { getProjets } from '~/src/projets';
+import { usePortfolioI18n } from '~/composables/usePortfolioI18n';
+
+const { t, locale } = usePortfolioI18n();
+
+const sectionTitle = computed(() => {
+    return t('projets.title');
+});
+
+const currentProjets = computed(() => {
+    return getProjets(locale.value);
+});
+</script>
 
 <style lang="scss">
-    
     .section--projets{
         display: flex;
         flex-direction: column;
@@ -19,29 +32,9 @@
         gap: 70px;
         margin-bottom: 100px;
         margin-top: 100px;
-        
-        
-        
     }
     .anchor-projets{
         position: relative;
         top: -100px;
     }
 </style>
-
-<script lang="ts">
-   // Récupère l'ensemble des projets
-   import projets from '~/src/projets';
-
-    export default{
-        name:"Projets",
-        data(){
-            return{
-                text : "Mes projets",
-                projets
-            }
-        },
-        
-        
-    }
-</script>

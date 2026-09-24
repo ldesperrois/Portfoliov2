@@ -1,36 +1,36 @@
 <template>
     <footer id="contact">
         <div class="footer--networks">
-            <h3>Mes Réseaux</h3>
-            <p>Je suis ouvert pour toutes offres ou propositions</p>
+            <h3>{{ t('footer.networks') }}</h3>
+            <p>{{ t('footer.openTo') }}</p>
             <p>{{ numero }}</p>
             <div class="footer--networks--ico">
-                <NuxtLink class="link-networks" to="mailto:lucas.desperrois29@gmail.com">
+                <NuxtLink class="link-networks" to="mailto:lucas.desperrois29@gmail.com" aria-label="Email">
                     <font-awesome class="socialnetwork" icon="envelope" />
                 </NuxtLink>
-                <NuxtLink to="https://www.instagram.com/lucas.dsp/" class="link-networks">
-                        <font-awesome class="socialnetwork" :icon="['fab', 'instagram']" />
+                <NuxtLink to="https://www.instagram.com/lucas.dsp/" class="link-networks" aria-label="Instagram">
+                    <font-awesome class="socialnetwork" :icon="['fab', 'instagram']" />
                 </NuxtLink>
-                <NuxtLink to="https://www.linkedin.com/in/lucas-desperrois-a453ba262/" class="link-networks">
-                        <font-awesome class="socialnetwork" :icon="['fab', 'linkedin']" />
+                <NuxtLink to="https://www.linkedin.com/in/lucas-desperrois-a453ba262/" class="link-networks" aria-label="LinkedIn">
+                    <font-awesome class="socialnetwork" :icon="['fab', 'linkedin']" />
                 </NuxtLink>
-                <NuxtLink to="https://github.com/ldesperrois" class="link-networks">
-                        <font-awesome class="socialnetwork" :icon="['fab', 'github']" />
+                <NuxtLink to="https://github.com/ldesperrois" class="link-networks" aria-label="GitHub">
+                    <font-awesome class="socialnetwork" :icon="['fab', 'github']" />
                 </NuxtLink>
             </div>
         </div>
         <form class="footer--email" ref="form" @submit.prevent="submitForm" method="POST">
-            <h3>Pour me contacter</h3>
+            <h3>{{ t('footer.contactMe') }}</h3>
             <div class="container--email">
                 <div class="email--nom--mail">
                     <InputsSimple :text="input1" type="text" name="from_name"/>
                     <InputsSimple :text="input2" type="text" name="email_id"/>
                 </div>
-                <textarea required id="message" name="message" placeholder="Ecrivez votre message"></textarea>
+                <textarea required id="message" name="message" :placeholder="t('footer.messagePlaceholder')"></textarea>
             </div>
             <div id="error-form"></div>
             <button class="button-cv button--antiman button--round-l button--text-medium" id="send" type="submit">
-                <i class="button__icon icon icon-map-marker"></i><span>Envoyer</span>
+                <i class="button__icon icon icon-map-marker"></i><span>{{ t('footer.send') }}</span>
             </button>
         </form>
 
@@ -39,98 +39,82 @@
 </template>
 
 <script lang="ts">
-import { useRuntimeConfig } from '#app';
-export default{
-    name :"Footer",
-    data(){
-        return{
-            input1:"Nom",
-            input2:"Email",
-            numero:"+33 7 66 66 78 67",
-        }
-    },
+import { defineComponent, ref, computed } from 'vue';
+import { useRuntimeConfig, useNuxtApp } from '#app';
+import { usePortfolioI18n } from '~/composables/usePortfolioI18n';
+
+export default defineComponent({
+    name: "Footer",
     setup() {
-        // Le formulaire, les variables de configuration et le module email de l'application (voir email.ts)
-        const form = ref<HTMLElement | null>(null) 
+        const { t } = usePortfolioI18n();
+        const numero = ref("+33 7 66 66 78 67");
+        const form = ref<HTMLFormElement | null>(null);
         const config = useRuntimeConfig();
         const nuxtApp = useNuxtApp();
-        /**
-         * Fonction qui s'occupe de tester si la saisie du mail est valide
-         * @param email 
-         */
-        const chekEmail = (email:string)=>{
-            let pattern =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return pattern.test(email)
-        }
-        /**
-         * Envoie le formulaire avec les vérifications nécessaire du formulaire 
-         * 
-         */
-        const sendEmail = async ()=>{
+
+        const input1 = computed(() => t('footer.name'));
+        const input2 = computed(() => t('footer.email'));
+
+        const chekEmail = (email: string) => {
+            let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return pattern.test(email);
+        };
+
+        const sendEmail = async () => {
+            if (!form.value) return;
             const email = form.value.elements.namedItem("email_id") as HTMLInputElement;
-            // Si l'email est valide
-            if(chekEmail(email.value)){
+            if (chekEmail(email.value)) {
                 try {
-                    await nuxtApp.$emailjs.sendForm(
-                    config.public.emailjsServiceId,
-                    config.public.emailjsTemplateId,
-                    form.value,
-                    config.public.emailjsPublicKey
-                );
+                    await (nuxtApp as any).$emailjs.sendForm(
+                        config.public.emailjsServiceId,
+                        config.public.emailjsTemplateId,
+                        form.value,
+                        config.public.emailjsPublicKey
+                    );
+                } catch (error) {
+                    console.log('FAILED...', error);
+                    throw error;
                 }
-                    catch (error) {
-                        console.log('FAILED...', error);
-                }
-                }
-        else{
-              throw new Error("Email")  
-            }
-        }
-        /**
-         * Fonction qui envoie le mail
-         * 
-         * @param e 
-         */
-         const submitForm = async (e) => {
-            e.preventDefault();
-            const divError = document.getElementById('error-form');
-            try {
-                // Essaye d'envoyer l'email
-                await sendEmail();
-                divError.innerHTML = '<span style="color:green">Email envoyé avec succès</span>';
-                setTimeout(() => { divError.innerHTML = ''; }, 4000);
-                // Reset du formulaire
-                e.target.reset();
-                let buttonSend = document.getElementById("send");
-                // Désactivation du bouton
-                buttonSend.disabled=true;
-                
-                
-            } catch (error) 
-            {
-                // Message d'erreurs
-                if(error.message=="Email"){
-                    divError.innerHTML = '<span style="color:red">Email non valide</span>';
-
-                }
-                else{
-                    // Message d'erreur
-                    divError.innerHTML = '<span style="color:red">Email envoyé sans succès</span>';
-                }
-                setTimeout(() => { divError.innerHTML = ''; }, 4000);
-
-                
-
+            } else {
+                throw new Error("Email");
             }
         };
+
+        const submitForm = async (e: Event) => {
+            e.preventDefault();
+            const divError = document.getElementById('error-form');
+            if (!divError) return;
+
+            try {
+                await sendEmail();
+                divError.innerHTML = `<span style="color:green">${t('footer.emailSuccess')}</span>`;
+                setTimeout(() => { divError.innerHTML = ''; }, 4000);
+                (e.target as HTMLFormElement).reset();
+                const buttonSend = document.getElementById("send") as HTMLButtonElement;
+                if (buttonSend) buttonSend.disabled = true;
+            } catch (error: any) {
+                if (error.message === "Email") {
+                    divError.innerHTML = `<span style="color:red">${t('footer.emailInvalid')}</span>`;
+                } else {
+                    divError.innerHTML = `<span style="color:red">${t('footer.emailFailed')}</span>`;
+                }
+                setTimeout(() => { divError.innerHTML = ''; }, 4000);
+            }
+        };
+
         return {
+            t,
+            numero,
+            input1,
+            input2,
             config,
             submitForm,
             form
         };
     },
-}
+});
 </script>
+
 <style lang="scss" scoped>
     p#by{
         position: absolute;
@@ -138,7 +122,6 @@ export default{
         left: 50%;
         text-align: center;
         transform: translate(-50%, -50%);
-       
     }
     footer{
         position: relative;
@@ -217,7 +200,6 @@ export default{
                 border-color: black;
             }
         }
-        
     }
 
     @media screen and (max-width:1050px){
@@ -228,7 +210,6 @@ export default{
         textarea{
             width: 450px!important;
         }
-
     }
 
     @media screen and (max-width:968px){
@@ -268,22 +249,16 @@ export default{
         }
         .container--email{
             width: 90%;
-
         }
-        
     }
     
     #result-message {
-  margin-top: 20px;
-  font-size: 16px;
-  color: #ff0000; /* Rouge pour les erreurs */
-}
+        margin-top: 20px;
+        font-size: 16px;
+        color: #ff0000;
+    }
 
-#result-message.success {
-  color: #28a745; /* Vert pour les succès */
-}
-    
-    
-
+    #result-message.success {
+        color: #28a745;
+    }
 </style>
-

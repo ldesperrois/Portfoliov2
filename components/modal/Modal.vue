@@ -16,11 +16,11 @@
                     <SliderModal :imageList="data.listeProjet"/>
                     <div class="projet--text">
                         <div class="description">
-                            <h4>Description</h4>
+                            <h4>{{ t('modal.description') }}</h4>
                             <p id="description">{{ data.description }}</p>
                         </div>
                         <div class="competences">
-                            <h4>Compétences acquises</h4>
+                            <h4>{{ t('modal.skills') }}</h4>
                             <div class="competences--list">
                                 <p>{{ data.competences.join(', ') }}</p>
                             </div>
@@ -28,7 +28,7 @@
                         
                         <div class="techno" :class="{ end: !data.langages }">
                             <div v-if="data.langages">
-                                <h4>Technologies utilisées</h4>
+                                <h4>{{ t('modal.techno') }}</h4>
                                 <div id="programation">
                                     <NuxtImg class="svgLanguage" v-for="(img,i) in data.langages" :key="i" :src="'/img/'+img"/>                          
                                 </div>
@@ -49,6 +49,8 @@
 
 
 <script lang="ts">
+import { usePortfolioI18n } from '~/composables/usePortfolioI18n';
+
 export default{
     props: {
         data: {
@@ -58,6 +60,10 @@ export default{
             type:Boolean,
         }
         
+    },
+    setup() {
+        const { t } = usePortfolioI18n();
+        return { t };
     },
     methods:{
         // Emettre un evenement de close au composant Parent

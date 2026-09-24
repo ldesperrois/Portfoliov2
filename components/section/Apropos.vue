@@ -3,35 +3,30 @@
         <div id="decouvrir" ></div>
         <div class="container--apropos">
             <div class="container--image">
-                <NuxtImg class="image--apropos" src="/img/LucasD.webp" />
+                <NuxtImg class="image--apropos" src="/img/LucasD.webp" alt="Lucas Desperrois" />
             </div>
             <div class="container--text--apropos" >
                 <div class="text--metier">
-                    <h2>Développeur </h2>
-                    <p class="text--metier">
-                        Découvrez l’ensemble de mes projets réalisés aussi bien dans le cadre universitaire que personnel. 
-                        J’ai développé mes compétences à <a target="_blank" href="https://iut-lannion.univ-rennes.fr/">l’IUT de Lannion</a>, au sein du parcours Administration, Gestion et Exploitation de la Donnée, tout en me passionnant pour d’autres domaines du développement, 
-                        en particulier les systèmes embarqués, que j’approfondis personnellement et que j’ai pu consolider au sein de  <a target="_blank" href="https://www.ensta-bretagne.fr/fr">l’ENSTA Bretagne</a> en formation d’ingénieur. Fort d’une expérience au sein d’un Lycée de la Défense, j’aimerais, à terme, mettre mes compétences au service des armées, 
-                        un univers que j’apprécie autant pour le cadre qu’il offre que pour les valeurs qu’il transmet.
-                    </p>
+                    <h2>{{ t('apropos.devTitle') }}</h2>
+                    <p class="text--metier" v-html="t('apropos.devText')"></p>
                 </div>
                 <div class="text--experience" >
-                    <h2>Expérience</h2>
-                    <p class="text--experience">
-                        J’ai réalisé au cours de mes études et de mon alternance de nombreux projets qui 
-                        m’ont appris à collaborer et amener mes équipes vers le haut. Vous avez l’occasion 
-                        à travers mon Portfolio de découvrir cetains de ces projets.  Selon moi 
-                        l’expérience est importante, elle témoigne nôtre intérêt mais  
-                        surtout notre capacité à se surpasser. Vous pouvez d'ailleurs télécharger mon CV ci-dessous.
-                    </p>
+                    <h2>{{ t('apropos.expTitle') }}</h2>
+                    <p class="text--experience" v-html="t('apropos.expText')"></p>
                 </div>
-                <a class="button-cv button--antiman button--round-l button--text-medium" download="CV_Lucas_Desperrois.pdf" href="/files/CV_Lucas_Desperrois.pdf">
-                    <i class="button__icon icon icon-map-marker"></i><span>Mon CV</span>
+                <a class="button-cv button--antiman button--round-l button--text-medium" :download="t('apropos.cvFileName')" :href="t('apropos.cvFile')">
+                    <i class="button__icon icon icon-map-marker"></i><span>{{ t('apropos.cvButton') }}</span>
                 </a>
             </div>
         </div>
     </div>
 </template>
+
+<script setup lang="ts">
+import { usePortfolioI18n } from '~/composables/usePortfolioI18n';
+
+const { t } = usePortfolioI18n();
+</script>
 
 <style lang="scss" scoped>
     #decouvrir{
@@ -88,16 +83,12 @@
                     border-color: black;
                 }
             }
-
         }
-        
     }
 @media screen and (max-width:1200px){
-    
     .image--apropos{
         width: 400px!important;
     }
-    
 }
 
 @media screen and (max-width:950px){

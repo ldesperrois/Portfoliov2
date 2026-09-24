@@ -1,7 +1,7 @@
 <template>
     <section id="programming-language">
         <div id="anchor-programming"></div>
-        <h2>Outils manipulés</h2>
+        <h2>{{ t('outils.title') }}</h2>
         <div id="container-programming">
             <canvas ref="canvas"></canvas>
         </div>
@@ -50,9 +50,14 @@
 
 
 
-import Matter from 'matter-js'
+import Matter from 'matter-js';
+import { usePortfolioI18n } from '~/composables/usePortfolioI18n';
 
 export default {
+  setup() {
+    const { t } = usePortfolioI18n();
+    return { t };
+  },
   mounted() {
     const canvas = this.$refs.canvas;
     

@@ -12,19 +12,19 @@
         <div class="container--accueil">
             <div class="accueil--text">
                 <h1>Desperrois Lucas</h1>
-                <p>Découvrez mes projets et compétences<br/> dans le domaine du développement informatique</p>
+                <p v-html="t('accueil.subtitle')"></p>
                 <div class="container--discover">
-                    <a href="#decouvrir" class="button-cv button--antiman button--round-l button--text-medium">
-                        <i class="button__icon icon icon-map-marker"></i><span>Découvrir</span>
-                     </a>
+                    <a :href="localePath('#decouvrir')" class="button-cv button--antiman button--round-l button--text-medium">
+                        <i class="button__icon icon icon-map-marker"></i><span>{{ t('accueil.discover') }}</span>
+                    </a>
                     <div class="reseaux">
-                        <NuxtLink to="https://www.instagram.com/lucas.dsp/">
+                        <NuxtLink to="https://www.instagram.com/lucas.dsp/" aria-label="Instagram">
                             <font-awesome class="socialnetwork" :icon="['fab', 'instagram']" />
                         </NuxtLink>
-                        <NuxtLink to="https://www.linkedin.com/in/lucas-desperrois-a453ba262/">
+                        <NuxtLink to="https://www.linkedin.com/in/lucas-desperrois-a453ba262/" aria-label="LinkedIn">
                             <font-awesome class="socialnetwork" :icon="['fab', 'linkedin']" />
                         </NuxtLink>
-                        <NuxtLink to="https://github.com/ldesperrois" class="link-networks">
+                        <NuxtLink to="https://github.com/ldesperrois" class="link-networks" aria-label="GitHub">
                             <font-awesome class="socialnetwork" :icon="['fab', 'github']" />
                         </NuxtLink>
                     </div>
@@ -34,8 +34,13 @@
     </div>
 </template>
 
+<script setup lang="ts">
+import { usePortfolioI18n } from '~/composables/usePortfolioI18n';
+
+const { t, localePath } = usePortfolioI18n();
+</script>
+
 <style lang="scss" scoped>
-   
     .section--accueil{
         padding-left: 4rem;
         padding-right: 4rem;  
@@ -43,7 +48,6 @@
         overflow: hidden;
         min-height: 100vh;
         display: flex;
-        position: fixed;
         position: relative;
         flex-direction: column;
         justify-content: center;
@@ -53,61 +57,55 @@
         background-image: url("../../public/img/Peinture_abstraite_bleue.webp");
         background-position: center;
         background-size: cover;
-        }
-        .container--accueil{
+    }
+    .container--accueil{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        z-index: 1;
+        gap: 100px;
+        .accueil--text{
+            height: 100%;
             display: flex;
-            flex-direction: row;
-            align-items: center;
-            z-index: 1;
-            gap: 100px;
-            .accueil--text{
-                height: 100%;
+            gap: 30px;
+            flex-direction: column;
+            align-items: flex-start;
+            color:#FFFF;
+            
+            h1{
+                font-size: 100px;
+                white-space:nowrap;
+                font-weight: 500;
+            }
+            p{
+                font-size: 25px;
+                font-weight: 500;
+            }
+            .container--discover{
                 display: flex;
+                flex-direction: row;
+                align-items: center;
                 gap: 30px;
-                flex-direction: column;
-                align-items: flex-start;
-                color:#FFFF;
-                
-                h1{
-                    font-size: 100px;
-                    white-space:nowrap;
-                    font-weight: 500;
-                    
+                a{
+                    color:black;
                 }
-                p{
-                    font-size: 25px;
-                    font-weight: 500;
+                a:hover{
+                    color: black;
                 }
-                .container--discover{
+                div.reseaux{
                     display: flex;
                     flex-direction: row;
-                    align-items: center;
                     gap: 30px;
-                    a{
-                      color:black;
-                    }
-                    a:hover{
-                        color: black;
-                    }
-                    div.reseaux{
-                        display: flex;
-                        flex-direction: row;
-                        gap: 30px;
-                        .socialnetwork{
+                    .socialnetwork{
                         font-size: 55px;
                         color:#fff;
-                        }
                     }
-                    
                 }
             }
         }
+    }
 
-
-    
-
-    
-@media  screen and (max-width:1250px) {
+@media screen and (max-width:1250px) {
     .section--accueil{
         padding-right:2em;
         padding-left:2em;
@@ -116,7 +114,6 @@
             .accueil--img{
                 width: 350px;
             }
-            
         }
     }
 }
@@ -139,7 +136,9 @@
     h1{
         font-size: 65px;
     }
-@media  screen and (max-width:1024px) {
+}
+
+@media screen and (max-width:1024px) {
     .accueil--img{
         display: none;
     }
@@ -162,16 +161,14 @@
                         font-size: 20px;
                         height: 60px;
                         width: 170px;
-
                     }
                 }
             }
-
-    }
+        }
     }
 }
 
-@media  screen and (max-width:768px) {
+@media screen and (max-width:768px) {
     h1{
         font-size: 70px !important;
     }
@@ -188,10 +185,10 @@
         flex-direction: column !important;
     }
 }
+
 @media screen and (max-width:400px) {
     h1{
         font-size: 60px!important;
     }
-}
 }
 </style>

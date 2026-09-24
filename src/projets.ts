@@ -9,12 +9,13 @@ export interface Projet {
     listeProjet: string[];
     langages: string[] | null;
     img: string;
-    website:boolean;
-    link:string | null;
-    competences :string[] ;
-  }
-  // Liste des projets
-  const projets: Projet[] = [
+    website: boolean;
+    link: string | null;
+    competences: string[];
+}
+
+// Liste des projets
+const projets: Projet[] = [
     {
       id: 1,
       name: "Alhaiz Breizh",
@@ -26,7 +27,6 @@ export interface Projet {
       website:false,
       link:null,
       competences : ["Realiser un développement d'application","Travailler dans une équipe informatique","Conduite de projet","Gerer des données de l'informations"],
-
     },
     {
       id: 2,
@@ -40,7 +40,6 @@ export interface Projet {
       link:"https://ldesperrois.github.io/PortFolio_Desperrois/",
       competences  : ["Realiser un développement d'application"],
     },
-    
     {
       id: 3,
       name: "Puissance4",
@@ -50,7 +49,7 @@ export interface Projet {
       listeProjet:["/img/Puissance4_1.webp","/img/Puissance4_2.webp"],
       img: "/img/Puissance4.webp",
       website:false,
-      competences :["Réaliser un Développement d'application","Optimiser des applications informatiques",],
+      competences :["Réaliser un Développement d'application","Optimiser des applications informatiques"],
       link:null
     },
     {
@@ -64,7 +63,6 @@ export interface Projet {
       website:true,
       link:"https://www.lucas-desperrois.fr/",
       competences :["Réaliser un Développement d'application"],
-
     },
     {
       id: 5,
@@ -77,7 +75,6 @@ export interface Projet {
       website:true,
       link:"https://ldesperrois.github.io/Website/fr/index.html",
       competences :["Réaliser un Développement d'application","Travailler dans une équipe informatique","Conduite de projet"],
-
     },
     {
       id:6,
@@ -86,11 +83,10 @@ export interface Projet {
       langages:["python.svg"],
       img:"/img/Dames.webp",
       listeProjet:["/img/8Dames_1.webp","/img/8Dames_2.webp"],
-      github:"https://github.com/ldesperrois/8-dames" ,
+      github:"https://github.com/ldesperrois/8-dames",
       website:false,
       link:null,
       competences :["Réaliser un Développement d'application","Optimiser des applications informatiques"],
-
     },
     {
       id:7,
@@ -140,7 +136,133 @@ export interface Projet {
       link:null,
       competences : ["Administrer des systèmes informatiques communicants","Travailler dans une équipe informatique"],
     }
-  ];
-  
-  export default projets;
-  
+];
+
+export const projetsEn: Projet[] = [
+    {
+      id: 1,
+      name: "Alhaiz Breizh",
+      description: "Vacation rental platform in Brittany developed as a team of 7 in an academic setting. Implemented Agile Scrum methodology over 4-week sprints, delivering iterative presentations to mock clients.",
+      github: "https://github.com/KazouDev/MKWeb",
+      langages: ["html.svg", "php.svg", "javascript.svg", "css.svg","postgresql.svg"],
+      img: "/img/AlhaizBreizh.webp",
+      listeProjet:["/img/Alhaiz_Breizh_1.webp","/img/Alhaiz_Breizh_2.webp"],
+      website:false,
+      link:null,
+      competences : ["Application Development","Teamwork in IT","Project Management","Data & Information Management"],
+    },
+    {
+      id: 2,
+      name: "Portfoliov1",
+      description: "First-year portfolio website applying foundational web development concepts, presenting my skills, areas of study, and initial projects.",
+      github: "https://github.com/ldesperrois/PortFolio_Desperrois",
+      langages: ["html.svg", "css.svg", "javascript.svg"],
+      listeProjet:["/img/Portfoliov1_1.webp","/img/Portfoliov1_2.webp"],
+      img: "/img/Portfoliov1.webp",
+      website:true,
+      link:"https://ldesperrois.github.io/PortFolio_Desperrois/",
+      competences  : ["Application Development"],
+    },
+    {
+      id: 3,
+      name: "Puissance4",
+      description: "Connect Four game implemented in C to master core language constructs, featuring a desktop graphical interface with CSFML and single-player vs AI mode.",
+      github: "https://github.com/ldesperrois/GUI-Puissance4",
+      langages: ["c.svg","csfml.png"],
+      listeProjet:["/img/Puissance4_1.webp","/img/Puissance4_2.webp"],
+      img: "/img/Puissance4.webp",
+      website:false,
+      competences :["Application Development","Application Optimization"],
+      link:null
+    },
+    {
+      id: 4,
+      name: "Portfoliov2",
+      description: "Modern, performant redesign of my personal portfolio using Nuxt 3, Vue 3, and TypeScript. Showcases my projects, engineering background, and experience.",
+      github: "https://github.com/ldesperrois/Portfoliov2",
+      langages: ["nuxtjs.svg", "css.svg", "typescript.svg"],
+      listeProjet:["/img/Portfoliov2_1.webp","/img/Portfoliov2_2.webp"],
+      img: "/img/Portfoliov2.webp",
+      website:true,
+      link:"https://www.lucas-desperrois.fr/",
+      competences :["Application Development"],
+    },
+    {
+      id: 5,
+      name: "Koh Sport",
+      description: "First collaborative web development project in a team of 5 discovering web fundamentals: client requirement gathering, agile planning, wireframing, and branding.",
+      github: "https://github.com/ldesperrois/Website",
+      langages: ["html.svg","css.svg"],
+      listeProjet:["/img/Koh_Sport_1.webp","/img/Koh_Sport_2.webp"],
+      img: "/img/KohSport.webp",
+      website:true,
+      link:"https://ldesperrois.github.io/Website/fr/index.html",
+      competences :["Application Development","Teamwork in IT","Project Management"],
+    },
+    {
+      id:6,
+      name:'8 dames',
+      description:"Solving the classic 8 Queens puzzle with optimized Python algorithms. Group project exploring backtracking and heuristics with visual PDF solution export.",
+      langages:["python.svg"],
+      img:"/img/Dames.webp",
+      listeProjet:["/img/8Dames_1.webp","/img/8Dames_2.webp"],
+      github:"https://github.com/ldesperrois/8-dames",
+      website:false,
+      link:null,
+      competences :["Application Development","Application Optimization"],
+    },
+    {
+      id:7,
+      name:"Parcoursup",
+      description:"Data engineering project designing schemas, populating datasets, and creating analytical SQL views to study correlations between various criteria and higher-ed acceptance rates.",
+      github:"https://github.com/ldesperrois/Parcoursup",
+      langages:["postgresql.svg","python.svg"],
+      img:"/img/Parcoursup.webp",
+      listeProjet:["/img/Parcoursup_1.webp","/img/Parcoursup_2.webp","/img/Parcoursup_3.webp"],
+      website:false,
+      link:null,
+      competences :["Data & Information Management"],
+    },
+    {
+      id:8,
+      name:"PokemonGo API",
+      description:"Collaborative project displaying Pokemon GO data across several UI iterations (up to complete V5), showcasing attributes, combat weaknesses, and detailed stats.",
+      github:"https://github.com/Sinay1005/PokemonWebSiteIUTLannion/tree/main",
+      langages:["html.svg","css.svg","javascript.svg"],
+      img:"/img/Pokemon.webp",
+      listeProjet:["/img/PokemonGo_1.webp","/img/PokemonGo_2.webp"],
+      website:true,
+      link:"https://otpspecter.github.io/PokemonWebSiteIUTLannion/",
+      competences : ["Application Development","Teamwork in IT"],
+    },
+    {
+      id:9,
+      name:"TeamBuilding",
+      description:"Corporate team-building management web app to organize workshops, manage attendees, and generate teams. Built in 3 weeks by a team of 5.",
+      github:"https://github.com/ldesperrois/TeamBuilding",
+      langages:null,
+      img:"/img/teambuilding_1.webp",
+      listeProjet:["/img/teambuilding_1.webp","/img/teambuilding_2.webp"],
+      website:false,
+      link:null,
+      competences : ["Project Management"],
+    },
+    {
+      id:10,
+      name:"Generateur PDF",
+      description:"Automated PDF report generator producing customized documents with QR codes, containerized via Docker and automated through Bash scripts in a team workflow.",
+      github:"https://github.com/KazouDev/Generateur-PDF/tree/main",
+      langages:["html.svg","css.svg","php.svg","docker.svg","bash.svg"],
+      img:"/img/generateurpdf_1.webp",
+      listeProjet:["/img/generateurpdf_1.webp","/img/generateurpdf_2.webp","/img/generateurpdf_3.webp"],
+      website:false,
+      link:null,
+      competences : ["Connected Systems Administration","Teamwork in IT"],
+    }
+];
+
+export const getProjets = (locale: string = 'fr'): Projet[] => {
+    return locale === 'en' ? projetsEn : projets;
+};
+
+export default projets;

@@ -41,11 +41,14 @@
     object-fit: cover;
     max-width: 500px;
     width: 80%;
+    height:100px;
     height: 250px;
 }
 #modal-swiper{
     position: relative;
     overflow: visible;
+    width:auto;
+
     width: 100%;
     .swiper-button-prev
         .swiper-button-next {
