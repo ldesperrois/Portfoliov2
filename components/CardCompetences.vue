@@ -1,7 +1,7 @@
 <template>
     <div class="phce card card-1">
     <div :style="backgroundImage"  class="content">
-        <h1>{{ this.compt.title }}</h1>
+        <h1>{{ compt?.title }}</h1>
     </div>
   </div>
 </template>
@@ -46,7 +46,7 @@ export default {
   computed:{
     backgroundImage(){
       return{
-      backgroundImage: `url(${this.$props.compt.linkimage})`,
+      backgroundImage: `url(${this.compt?.linkimage || ''})`,
       backgroundSize: 'cover',  // tu peux personnaliser les autres styles ici
       backgroundPosition: 'center'
     }

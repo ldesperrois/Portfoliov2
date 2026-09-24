@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     '@vesp/nuxt-fontawesome', 
     'nuxt-swiper', 
   ],
+  nitro: {
+    preset: 'cloudflare'
+  },
   fontawesome: {
     icons: {
       solid: ['envelope', 'close', 'bars','link'],
