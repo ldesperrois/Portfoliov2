@@ -15,6 +15,12 @@
     </main>
 </template>
 
+<script setup lang="ts">
+import { usePortfolioI18n } from '~/composables/usePortfolioI18n';
+
+const { locale } = usePortfolioI18n();
+</script>
+
 <style lang="scss">
     html{
         overflow: scroll;

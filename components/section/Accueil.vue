@@ -1,20 +1,15 @@
 <template>
     <div class="section--accueil" id="accueil">
-        <div>
-            <div class="cube"></div>
-            <div class="cube"></div>
-            <div class="cube"></div>
-            <div class="cube"></div>
-            <div class="cube"></div>
-            <div class="cube"></div>
-            <div class="cube"></div>
-        </div>
+        <EffectCircuitSchematic />
+        
         <div class="container--accueil">
             <div class="accueil--text">
-                <h1>Desperrois Lucas</h1>
+                <h1 class="hero-name">Lucas Desperrois</h1>
+                
                 <p v-html="t('accueil.subtitle')"></p>
+                
                 <div class="container--discover">
-                    <a :href="localePath('#decouvrir')" class="button-cv button--antiman button--round-l button--text-medium">
+                    <a :href="localePath('#decouvrir')" class="button-cv button--antiman button--round-l button--text-medium button-discover">
                         <i class="button__icon icon icon-map-marker"></i><span>{{ t('accueil.discover') }}</span>
                     </a>
                     <div class="reseaux">
@@ -31,6 +26,21 @@
                 </div>
             </div>
         </div>
+
+        <a :href="localePath('#decouvrir')" class="scroll-indicator" aria-label="Scroll down">
+            <div class="chevrons-stack">
+                <svg class="chevron chevron-1" width="20" height="9" viewBox="0 0 20 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 2L10 7L18 2"/>
+                </svg>
+                <svg class="chevron chevron-2" width="20" height="9" viewBox="0 0 20 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 2L10 7L18 2"/>
+                </svg>
+                <svg class="chevron chevron-3" width="20" height="9" viewBox="0 0 20 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 2L10 7L18 2"/>
+                </svg>
+            </div>
+            <span class="scroll-label">{{ t('accueil.scrollDown') }}</span>
+        </a>
     </div>
 </template>
 
@@ -52,143 +62,206 @@ const { t, localePath } = usePortfolioI18n();
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        animation: gradient 10s ease infinite; 
-        background-size: 400% 400%;
-        background-image: url("../../public/img/Peinture_abstraite_bleue.webp");
-        background-position: center;
-        background-size: cover;
+        background-color: #060919;
     }
+
     .container--accueil{
         display: flex;
         flex-direction: row;
         align-items: center;
-        z-index: 1;
+        z-index: 2;
         gap: 100px;
+        max-width: 1200px;
+        width: 100%;
+
         .accueil--text{
             height: 100%;
             display: flex;
-            gap: 30px;
+            gap: 24px;
             flex-direction: column;
             align-items: flex-start;
-            color:#FFFF;
+            color: #FFFF;
             
-            h1{
-                font-size: 100px;
-                white-space:nowrap;
-                font-weight: 500;
+            h1.hero-name{
+                font-size: 90px;
+                white-space: nowrap;
+                font-weight: 700;
+                letter-spacing: -0.025em;
+                line-height: 1.05;
+                color: #ffffff;
+                text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
             }
+
             p{
-                font-size: 25px;
-                font-weight: 500;
+                font-size: 23px;
+                font-weight: 300;
+                line-height: 1.5;
+                color: rgba(255, 255, 255, 0.88);
             }
+
             .container--discover{
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 gap: 30px;
-                a{
-                    color:black;
+                margin-top: 10px;
+
+                .button-discover {
+                    background: #ffffff;
+                    color: #0b1026 !important;
+                    font-weight: 600;
+                    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.35);
+                    }
                 }
-                a:hover{
-                    color: black;
-                }
+
                 div.reseaux{
                     display: flex;
                     flex-direction: row;
-                    gap: 30px;
+                    gap: 25px;
+
                     .socialnetwork{
-                        font-size: 55px;
-                        color:#fff;
+                        font-size: 45px;
+                        color: rgba(255, 255, 255, 0.85);
+                        transition: color 0.25s ease, transform 0.25s ease;
+
+                        &:hover {
+                            color: #64b5f6;
+                            transform: translateY(-3px);
+                        }
                     }
                 }
             }
         }
     }
 
-@media screen and (max-width:1250px) {
-    .section--accueil{
-        padding-right:2em;
-        padding-left:2em;
-        .container--accueil{
-            gap: 50px;
-            .accueil--img{
-                width: 350px;
+    .scroll-indicator {
+        position: absolute;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        color: rgba(255, 255, 255, 0.65);
+        text-decoration: none;
+        z-index: 2;
+        transition: color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+            color: #38bdf8;
+            transform: translateX(-50%) translateY(-2px);
+        }
+
+        .chevrons-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            margin-bottom: 2px;
+
+            .chevron {
+                color: #38bdf8;
+                animation: chevron-cascade 1.6s ease-in-out infinite;
+
+                &.chevron-1 { animation-delay: 0s; }
+                &.chevron-2 { animation-delay: 0.22s; }
+                &.chevron-3 { animation-delay: 0.44s; }
+            }
+        }
+
+        .scroll-label {
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+    }
+
+    @keyframes chevron-cascade {
+        0% { opacity: 0.15; transform: translateY(-2px); }
+        50% { opacity: 1; transform: translateY(0); color: #00f0ff; }
+        100% { opacity: 0.15; transform: translateY(2px); }
+    }
+
+    @media screen and (max-width:1250px) {
+        .section--accueil{
+            padding-right: 2em;
+            padding-left: 2em;
+            .container--accueil{
+                gap: 50px;
             }
         }
     }
-}
 
-@media screen and (max-width:1100px) {
-    .section--accueil{
-        padding-right: 1em;
-        padding-left: 1em;
-        .container--accueil{
-            .accueil--text{
-                h1{
-                    font-size: 70px;
-                }
-                p{
-                    font-size: 18px;
-                }
-            }
-        }
-    }
-    h1{
-        font-size: 65px;
-    }
-}
-
-@media screen and (max-width:1024px) {
-    .accueil--img{
-        display: none;
-    }
-    .section--accueil{
-        padding-right: 1em;
-        padding-left: 1em;
-        .container--accueil{
-            .accueil--text{
-                align-items: center;
-                h1{
-                    font-size: 80px;
-                    text-align: center;
-                }
-                p{
-                    text-align: center;
-                    font-size: 25px;
-                }
-                .container--discover{
-                    a.discover{
+    @media screen and (max-width:1100px) {
+        .section--accueil{
+            padding-right: 1.5em;
+            padding-left: 1.5em;
+            .container--accueil{
+                .accueil--text{
+                    h1.hero-name{
+                        font-size: 70px;
+                    }
+                    p{
                         font-size: 20px;
-                        height: 60px;
-                        width: 170px;
                     }
                 }
             }
         }
     }
-}
 
-@media screen and (max-width:768px) {
-    h1{
-        font-size: 70px !important;
+    @media screen and (max-width:1024px) {
+        .section--accueil{
+            padding-right: 1.5em;
+            padding-left: 1.5em;
+            .container--accueil{
+                .accueil--text{
+                    align-items: center;
+                    text-align: center;
+                    
+                    h1.hero-name{
+                        font-size: 65px;
+                        text-align: center;
+                        white-space: normal;
+                    }
+                    p{
+                        text-align: center;
+                        font-size: 20px;
+                    }
+                    .status-badge {
+                        font-size: 13px;
+                        padding: 6px 14px;
+                    }
+                }
+            }
+        }
     }
-    p{
-        font-size: 20px !important;
-    }
-}
 
-@media screen and (max-width:600px) {
-    h1{
-        text-wrap: wrap !important;
+    @media screen and (max-width:768px) {
+        .accueil--text h1.hero-name{
+            font-size: 52px !important;
+        }
+        .accueil--text p{
+            font-size: 17px !important;
+        }
+        .scroll-indicator {
+            display: none;
+        }
     }
-    .container--discover{
-        flex-direction: column !important;
-    }
-}
 
-@media screen and (max-width:400px) {
-    h1{
-        font-size: 60px!important;
+    @media screen and (max-width:600px) {
+        .container--discover{
+            flex-direction: column !important;
+            gap: 20px !important;
+        }
+        .accueil--text h1.hero-name{
+            font-size: 42px !important;
+        }
     }
-}
 </style>

@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     'nuxt-swiper', 
   ],
   nitro: {
-    preset: 'cloudflare'
+    preset: process.env.CF_PAGES ? 'cloudflare-pages' : 'cloudflare'
   },
   fontawesome: {
     icons: {

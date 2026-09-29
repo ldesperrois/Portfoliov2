@@ -15,8 +15,10 @@ export const translations = {
       contact: "Contact"
     },
     accueil: {
+      statusBadge: "🟢 Recherche de stage • Informatique, Embarqué, IA & Robotique",
       subtitle: "Découvrez mes projets et compétences<br/> dans le domaine du développement informatique",
-      discover: "Découvrir"
+      discover: "Découvrir",
+      scrollDown: "Défiler pour explorer"
     },
     apropos: {
       devTitle: "Développeur",
@@ -31,7 +33,8 @@ export const translations = {
       title: "Mes Compétences"
     },
     outils: {
-      title: "Outils manipulés"
+      title: "Outils manipulés",
+      subtitleInteractive: "Attrapez, déplacez et projetez les technologies avec la souris !"
     },
     projets: {
       title: "Mes projets"
@@ -71,8 +74,10 @@ export const translations = {
       contact: "Contact"
     },
     accueil: {
+      statusBadge: "🟢 Seeking Internship • Software, Embedded, AI & Robotics",
       subtitle: "Discover my projects and skills<br/> in software development",
-      discover: "Explore"
+      discover: "Explore",
+      scrollDown: "Scroll to explore"
     },
     apropos: {
       devTitle: "Software Developer",
@@ -87,7 +92,8 @@ export const translations = {
       title: "My Skills"
     },
     outils: {
-      title: "Tools & Technologies"
+      title: "Tools & Technologies",
+      subtitleInteractive: "Click, drag and toss the technologies with your mouse!"
     },
     projets: {
       title: "My projects"

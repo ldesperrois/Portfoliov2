@@ -6,22 +6,35 @@ export const usePortfolioI18n = () => {
   const route = useRoute();
   const router = useRouter();
 
-  // Reactive state for locale, initialized based on current path
+  // Reactive state for locale, initialized based on current URL path
   const locale = useState<Locale>('portfolio_locale', () => {
+    if (typeof window !== 'undefined') {
+      return window.location.pathname.startsWith('/en') ? 'en' : 'fr';
+    }
     return route.path.startsWith('/en') ? 'en' : 'fr';
   });
 
-  // Sync locale whenever route changes
-  watch(
-    () => route.path,
-    (newPath) => {
-      const detectedLocale: Locale = newPath.startsWith('/en') ? 'en' : 'fr';
-      if (locale.value !== detectedLocale) {
-        locale.value = detectedLocale;
+  // Ensure client locale strictly matches the actual browser URL on initial load / refresh
+  if (typeof window !== 'undefined' && !(window as any).__portfolio_initial_synced) {
+    (window as any).__portfolio_initial_synced = true;
+    const isEnPath = window.location.pathname.startsWith('/en');
+    const expectedLocale: Locale = isEnPath ? 'en' : 'fr';
+    if (locale.value !== expectedLocale) {
+      locale.value = expectedLocale;
+    }
+  }
+
+  // Keep locale in sync with browser back / forward buttons (popstate)
+  if (typeof window !== 'undefined' && !(window as any).__portfolio_popstate_bound) {
+    (window as any).__portfolio_popstate_bound = true;
+    window.addEventListener('popstate', () => {
+      const isEnPath = window.location.pathname.startsWith('/en');
+      const targetLocale: Locale = isEnPath ? 'en' : 'fr';
+      if (locale.value !== targetLocale) {
+        locale.value = targetLocale;
       }
-    },
-    { immediate: true }
-  );
+    });
+  }
 
   const isEn = computed(() => locale.value === 'en');
   const isFr = computed(() => locale.value === 'fr');
@@ -79,15 +92,20 @@ export const usePortfolioI18n = () => {
   };
 
   /**
-   * Switch language and navigate accordingly
+   * Switch language instantly and update browser address bar without freezing or unmounting the page
    */
   const setLocale = (newLocale: Locale) => {
+    if (locale.value === newLocale) return;
     locale.value = newLocale;
-    const currentHash = route.hash || '';
-    if (newLocale === 'en') {
-      router.push(`/en${currentHash}`);
-    } else {
-      router.push(`/${currentHash}`);
+
+    if (typeof window !== 'undefined') {
+      const currentHash = window.location.hash || '';
+      const target = newLocale === 'en' ? `/en${currentHash}` : `/${currentHash}`;
+      try {
+        window.history.pushState(window.history.state, '', target);
+      } catch (e) {
+        // Fallback if pushState is restricted
+      }
     }
   };
 

@@ -2,7 +2,7 @@
   <div id="app">
     <div id="content">
       <Header/>
-      <NuxtPage/>
+      <NuxtPage :page-key="() => 'portfolio'"/>
       <Footer/>
     </div>
   </div>
